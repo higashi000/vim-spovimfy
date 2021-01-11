@@ -14,10 +14,9 @@ function spovimfy#pause#pause() abort
 
 
     if res['status'] == 204
-        echo 'Success!'
+        return 'Success!'
     else
-        echo 'Failure...'
         let content = s:J.decode(res['content'])
-        echo content.error.message
+        return content.error.message
     endif
 endfunction
