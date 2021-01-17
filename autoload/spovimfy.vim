@@ -34,3 +34,17 @@ function spovimfy#playPlaylists() abort
         echo 'play lists is not find'
     endif
 endfunction
+
+function spovimfy#getToken() abort
+    let s:V = vital#spovimfy#new()
+    let s:H = s:V.import('Web.HTTP')
+    let s:J = s:V.import('Web.JSON')
+
+    let url = 'https://localhost:5000/'
+
+    let res = system("curl -X GET -w \"%{redirect_url}\" -s 'https://localhost:5000/' -k")
+
+    let cmd = 'OpenBrowser ' . res
+    echo cmd
+    execute(cmd)
+endfunction
