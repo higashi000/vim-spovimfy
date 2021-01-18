@@ -33,7 +33,7 @@ function spovimfy#play#choice(trackURI) abort
 
     let url = 'https://api.spotify.com/v1/me/player/play'
 
-    let cmd = 'curl -X PUT "'.url.'" -H "Authorization: Bearer '.g:spovimfy_token.'" -d '.'"{\"uris\": [\"'.a:trackURI.'\"]}"'
+    let cmd = 'curl -X PUT "'.url.'" -H "Authorization: Bearer '.g:spovimfy_token.'" -d '.'"{\"uris\": [\"'.a:trackURI.'\"]}"' . ' -s'
 
     call system(cmd)
 endfunction
@@ -50,7 +50,7 @@ function spovimfy#play#playlists(uri) abort
 
     let url = 'https://api.spotify.com/v1/me/player/play'
 
-    let cmd = 'curl -X PUT "'.url.'" -H "Authorization: Bearer '.g:spovimfy_token.'" -d '.'"{\"context_uri\": \"'.a:uri.'\"}"'
+    let cmd = 'curl -X PUT "'.url.'" -H "Authorization: Bearer '.g:spovimfy_token.'" -d '.'"{\"context_uri\": \"'.a:uri.'\"}"' . ' -s'
 
     call system(cmd)
 endfunction
