@@ -8,6 +8,7 @@ set cpo&vim
 
 command! SpovimfyPlay call spovimfy#choicePlay()
 command! SpovimfyPlayPlaylists call spovimfy#playPlaylists()
+command! SpovimfyGetToken call spovimfy#getToken()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
