@@ -35,6 +35,30 @@ function spovimfy#playPlaylists() abort
     endif
 endfunction
 
+function spovimfy#dispPlaylists() abort
+    if !has('patch-8.1.1594')
+        echo 'required vim 8.1.1594 or higher'
+        return
+    endif
+
+    let playlists = spovimfy#playlists#playlists()
+
+    let playlistsName = []
+
+    for e in keys(playlists)
+        let playlistsName = add(e . ' [' . playlists[e] . ']')
+    endfor
+
+    let pos = getpos('.')
+
+    call popup_menu(playlistsName, {
+                \ 'line': line('.') + 2,
+                \ 'col': col('.') + 2,
+                \ 'moved': 'any',
+                \ 'filter': 'popup_filter_menu',
+                \ })
+endfunction
+
 function spovimfy#getToken() abort
     let s:V = vital#spovimfy#new()
     let s:H = s:V.import('Web.HTTP')
